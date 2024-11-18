@@ -1,0 +1,12 @@
+---
+- name: Configure a login banner on Cisco IOS
+  hosts: cisco
+  gather_facts: no
+  vars_files:
+    - banner_vars.yml
+  tasks:
+    - name: Configure a login banner on Cisco IOS
+      cisco.ios.ios_banner:
+        banner: "{{ banner_type }}"
+        text: "{{ network_banner }}"
+        state: present

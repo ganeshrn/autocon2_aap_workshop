@@ -1,0 +1,18 @@
+---
+ansible-navigator:
+  ansible:
+    inventory:
+      entries:
+      - /home/student/autocon2_aap_workshop/hosts
+  execution-environment:
+    container-engine: podman
+    enabled: true
+    image: autocon-ee:latest
+    pull:
+      policy: never
+  logging:
+    level: debug
+    file: /home/student/ansible-navigator.log
+  playbook-artifact:
+    save-as: /home/student/playbook-artifacts-autocon2/{playbook_name}-artifact-{time_stamp}.json
+

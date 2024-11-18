@@ -1,0 +1,13 @@
+communities:
+-   acl_v4: acl_uq
+    name: ansible-community
+    rw: true
+-   acl_v4: acl_uq
+    name: autocon2-community
+    rw: true
+hosts:
+-   community_string: autocon2-community
+    host: 192.0.2.104
+    traps:
+    - bgp
+    version: 2c

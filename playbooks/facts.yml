@@ -1,0 +1,13 @@
+---
+- name: Gather and display facts from Cisco IOS
+  hosts: cisco
+  gather_facts: false
+  tasks:
+    - name: Gather facts
+      cisco.ios.ios_facts:
+    - name: Display facts
+      ansible.builtin.debug:
+        var: ansible_facts
+    - name: Display serial number
+      ansible.builtin.debug:
+        msg: "The serial number is: {{ ansible_net_serialnum }}"

@@ -1,0 +1,13 @@
+{
+    "ansible.python.interpreterPath": "/usr/bin/python",
+
+    "yaml.schemas": {
+        "https://raw.githubusercontent.com/ansible/ansible-rulebook/refs/heads/main/ansible_rulebook/schema/ruleset_schema.json ": ["rulebooks/*.yaml", "rulebooks/*.yml"],
+    },
+    "files.associations": {
+        "rulebooks/*.yaml": "yaml",
+        "rulebooks/*.yml": "yaml"
+    }
+}
+
+
