@@ -1,0 +1,54 @@
+---
+- name: Configure BGP on Arista ceos1
+  hosts: ceos1
+  gather_facts: false
+  tasks:
+    - name: Configure BGP on ceos1
+      arista.eos.eos_bgp_global:
+        state: overridden
+        config:
+          as_number: 64496
+          router_id: 1.1.1.1
+          neighbors:
+            - neighbor_address: "10.0.0.1"
+              remote_as: 64497
+            - neighbor_address: "10.0.0.4"
+              remote_as: 64498
+          redistribute:
+            - protocol: connected
+
+- name: Configure BGP on Arista ceos2
+  hosts: ceos2
+  gather_facts: false
+  tasks:
+    - name: Configure BGP on ceos2
+      arista.eos.eos_bgp_global:
+        state: overridden
+        config:
+          as_number: 64497
+          router_id: 2.2.2.2
+          neighbors:
+            - neighbor_address: "10.0.0.0"
+              remote_as: 64496
+            - neighbor_address: "10.0.0.3"
+              remote_as: 64498
+          redistribute:
+            - protocol: connected
+
+- name: Configure BGP on Arista ceos3
+  hosts: ceos3
+  gather_facts: false
+  tasks:
+    - name: Configure BGP on ceos3
+      arista.eos.eos_bgp_global:
+        state: overridden
+        config:
+          as_number: 64498
+          router_id: 3.3.3.3
+          neighbors:
+            - neighbor_address: "10.0.0.2"
+              remote_as: 64497
+            - neighbor_address: "10.0.0.5"
+              remote_as: 64496
+          redistribute:
+            - protocol: connected

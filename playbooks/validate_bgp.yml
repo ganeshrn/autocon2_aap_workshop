@@ -1,0 +1,17 @@
+---
+- name: Validate BGP on Arista cEOS
+  hosts: ceos1
+  gather_facts: false
+  tasks:
+    - name: Get BGP neighbor details from ceos1
+      arista.eos.eos_command:
+        commands:
+          - show ip bgp neighbor 10.0.0.1
+          - show ip bgp neighbor 10.0.0.4
+      register: bgp_output
+
+    - name: Assert that BGP neighbor state is established
+      ansible.builtin.assert:
+        that:
+          - '"BGP state is Established" in bgp_output.stdout[0]'
+          - '"BGP state is Established" in bgp_output.stdout[1]'
